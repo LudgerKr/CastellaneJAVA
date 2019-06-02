@@ -18,48 +18,60 @@ import controleur.Users;
 
 import vue.PanelAjoutSeances;
 
-
-public class VueUtilisateur extends JFrame implements ActionListener
+public class VueMoniteur extends JFrame implements ActionListener
 {
+	private static VueBDDSeance uneVueBDDSeance;
+	private static VueBDDAnnonce uneVueBDDAnnonce;
+	private static VueBDDVehicle uneVueBDDVehicle;
+
 	private JPanel panelProfil = new JPanel(); 
 	private JButton btQuitter = new JButton("Quitter");
 	
-	private PanelAjoutSeances unPanelAjout = new PanelAjoutSeances();
-	private JButton btAjouter = new JButton("Ajouter");
+	private PanelListerSeances unPanelSeance = new PanelListerSeances();
+	private JButton btSeance = new JButton("Séance");
 	
-	private PanelListerSeances unPanelLister = new PanelListerSeances();
-	private JButton btLister = new JButton("Lister");
+	private PanelListerAnnonces unPanelAnnonce = new PanelListerAnnonces();
+	private JButton btAnnonce = new JButton("Annonce");
 	
-	public VueUtilisateur(Users unUser)
+	private PanelListerVehicles unPanelVehicle = new PanelListerVehicles();
+	private JButton btVehicle = new JButton("Vehicule");
+	
+	public VueMoniteur(Users unUser)
 	{
-		this.setTitle("Administration de la bdd Fnac ");
+		this.setTitle("Administration de la base de données Castellane ");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 20, 1200, 500);
 		this.setLayout(null);
-		this.getContentPane().setBackground(Color.RED);
+		this.getContentPane().setBackground(Color.GREEN);
 		this.setResizable(false);
 		
 		this.btQuitter.setBounds(1000, 400, 100, 30);
 		this.add(this.btQuitter); 
 		
-		// insertion du panel Ajout
-		this.btAjouter.setBounds(350, 10, 100, 20);
-		this.add(this.btAjouter);
-		this.add(this.unPanelAjout);
-		this.btAjouter.addActionListener(this);
-		
-		// insertion du panel Lister
-		this.btLister.setBounds(470, 10, 100, 20);
-		this.add(this.btLister);
-		this.add(this.unPanelLister);
-		this.btLister.addActionListener(this);
-		
 		//construction du panel Profil 
 		this.panelProfil.setBounds(20, 40, 200, 250);
-		this.panelProfil.setBackground(Color.MAGENTA);
+		this.panelProfil.setBackground(Color.CYAN);
+		
+		// insertion du panel Séance
+		this.btSeance.setBounds(350, 10, 100, 20);
+		this.add(this.btSeance);
+		this.add(this.unPanelSeance);
+		this.btSeance.addActionListener(this);
+		
+		// insertion du panel Annonce
+		this.btAnnonce.setBounds(450, 10, 100, 20);
+		this.add(this.btAnnonce);
+		this.add(this.unPanelAnnonce);
+		this.btAnnonce.addActionListener(this);
+		
+		// insertion du panel Vehicle
+		this.btVehicle.setBounds(550, 10, 100, 20);
+		this.add(this.btVehicle);
+		this.add(this.unPanelVehicle);
+		this.btVehicle.addActionListener(this);
 		
 		// placement de la photo
-		ImageIcon uneImage = new ImageIcon("src/images/user.png"); 
+		ImageIcon uneImage = new ImageIcon("src/images/other.png"); 
 		JLabel monImage = new JLabel(uneImage); 
 		monImage.setBounds(750, 40, 260, 200);
 		this.add(monImage);
@@ -85,12 +97,12 @@ public class VueUtilisateur extends JFrame implements ActionListener
 				this.dispose();
 				Castellane.setVisible(true); 
 				} 
-		} else if (e.getSource() == this.btAjouter) {
-			this.unPanelAjout.setVisible(true);
-			this.unPanelLister.setVisible(false);
-		}  else if (e.getSource() == this.btLister) {
-			this.unPanelAjout.setVisible(false);
-			this.unPanelLister.setVisible(true);
+		} else if (e.getSource() == this.btSeance) {
+			uneVueBDDSeance = new VueBDDSeance();
+		} else if (e.getSource() == this.btAnnonce) {
+			uneVueBDDAnnonce = new VueBDDAnnonce();
+		} else if (e.getSource() == this.btVehicle) {
+			uneVueBDDVehicle = new VueBDDVehicle();
 		}
 	}
 }

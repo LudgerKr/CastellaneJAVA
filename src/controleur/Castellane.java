@@ -9,15 +9,13 @@ import modele.ModeleUser;
 import modele.ModeleVehicle;
 import vue.VueConnexion;
 import vue.VueAdministrateur;
-import vue.VueUtilisateur;
-import vue.VueAutre;
+import vue.VueMoniteur;
 
 public class Castellane {
 
 	private static VueConnexion uneVueConnexion ; 
 	private static VueAdministrateur uneVueAdministrateur; 
-	private static VueUtilisateur uneVueUtilisateur; 
-	private static VueAutre uneVueAutre; 
+	private static VueMoniteur uneVueAutre; 
 	
 	public static void setVisible (boolean action)
 	{
@@ -44,16 +42,13 @@ public class Castellane {
 					if (unUser.getRight().equals("Administrateur")) {
 					uneVueAdministrateur = new VueAdministrateur(unUser);
 					} else if (unUser.getRight().equals("Utilisateur")) {
-					uneVueUtilisateur = new VueUtilisateur(unUser);
+						JOptionPane.showMessageDialog(null,"Les utilisateurs n'ont pas accès à cet application !", "Erreur", JOptionPane.ERROR_MESSAGE);
 					} else if (unUser.getRight().equals("Moniteur")) {
-					uneVueAutre = new VueAutre(unUser);
+					uneVueAutre = new VueMoniteur(unUser);
 					}
 			} 					
 			
 		}
-		
-		
-		
 	}
 
 	public static void insertSeance(Seances uneSeance) {

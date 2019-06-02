@@ -74,7 +74,6 @@ public class PanelAjoutVehicles extends PanelCentral implements ActionListener {
 				this.txtMileage.setText("");
 				this.txtBrand.setText("");
 
-
 				unVehicle = Castellane.selectWhereVehicle(unVehicle);
 				Object ligne[] = {unVehicle.getIdvehicles(), unVehicle.getlicenseplate(), unVehicle.getMileage(), unVehicle.getBrand(), unVehicle.getStatus()};
 				
