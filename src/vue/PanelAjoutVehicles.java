@@ -69,7 +69,7 @@ public class PanelAjoutVehicles extends PanelCentral implements ActionListener {
 				//insertion dans la base de données
 				Vehicles unVehicle = new Vehicles(licenseplate, mileage, brand, status);
 				Castellane.insertVehicle(unVehicle);
-				JOptionPane.showMessageDialog(this, "Insertion réussie du véhicule", "Information", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Insertion réussie du véhicule, veuillez fermer la fênetre pour actualiser la liste", "Information", JOptionPane.INFORMATION_MESSAGE);
 				this.txtLicenseplate.setText("");
 				this.txtMileage.setText("");
 				this.txtBrand.setText("");

@@ -100,7 +100,7 @@ public class ModeleVehicle
 		// TODO Auto-generated method stub
 		String requete = "select * from vehicles where licenseplate ='"+unVehicle.getlicenseplate()
 		+"' and mileage = '"+unVehicle.getMileage()+"'  and brand = '"+unVehicle.getBrand()+"'"
-		+ " and status = '"+unVehicle.getStatus()+"';";
+		+ " and `status` = '"+unVehicle.getStatus()+"';";
 		Vehicles unVehic = null;
 		ModeleVehicle.uneBdd.seConnecter();
 		try
